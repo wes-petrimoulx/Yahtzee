@@ -6,39 +6,14 @@ public class Yahtzee {
 	
 	public static void main(String[] args) {
 		
-		Dice newDice = new Dice();
-		Scanner sc = new Scanner(System.in);
+		Decision newDecision = new Decision();
 		
+		System.out.println("Welcome to Yahtzee! There are 10 turns, each turn having a possible of 3 rolls.");
 		
-			for(int i = 0; i < 5; i++) {
-				int num = newDice.roll();
-				System.out.print(num + " ");
-				if(i == 4) {
-					System.out.println("");
-				}
-			}
+		for(int x = 0; x < 10; x++) {
+			newDecision.reRoll();
+		}
 			
-			
-			
-			System.out.print("Would you like to roll again? (y/n): ");
-			String name = sc.nextLine();
-			
-			if(name.equals("y")) {
-				for(int i = 0; i < 5; i++) {
-					int num = newDice.roll();
-					System.out.print(num + " ");
-					if(i == 4) {
-						System.out.println("");
-					}
-				}
-			}
-			else if(name.equals("n")) {
-				System.out.print("okay");
-			}
-			else {
-				System.out.print("error");
-			}
-			
-		
+		System.out.println("Thank you for playing!");
 	}
 }
