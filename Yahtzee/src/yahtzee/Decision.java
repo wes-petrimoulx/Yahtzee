@@ -17,12 +17,10 @@ public class Decision {
 	}
 	
 	void makeDecision() {
-		System.out.println("You may re-roll your die once, regardless if score is lower or higher, it will be ");
-		System.out.println("added to your scorecard. Would you like to roll your die again?");
-		System.out.println("If no, Turn Total Score will be added to scorecard (y/n): ");
-		String name = sc.nextLine();
+		System.out.println("Would you like to re-roll? If no, Turn Total Score will be added to scorecard (y/n): ");
+		String decision = sc.nextLine();
 		
-		if(name.equals("y")) {
+		if(decision.equals("y")) {
 			System.out.println("-----------------------------------------------------------------------------------");
 			System.out.println("Here is your roll: ");
 			newDice.roll();
@@ -44,7 +42,7 @@ public class Decision {
 			System.out.println("Your Total Score on Scorecard is: " + scorecardTotal);
 			System.out.println("");
 		}
-		else if(name.equals("n")) {
+		else if(decision.equals("n")) {
 			int turn = newDice.getSum();
 			System.out.println("");
 			System.out.println("Score added to scorecard: " + turn);
