@@ -1,22 +1,18 @@
 package yahtzee;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 
 import java.util.*;
+import javax.swing.*;
+import java.awt.*;
 
-public class Yahtzee {
-	
+public class Yahtzee{
 	
 	public static void main(String[] args) {
 		
 		
-		//Initial start of program 
+		gui guiFrame = new gui();
+		guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		guiFrame.setSize(700, 700);
+		guiFrame.setVisible(true);
 		
 		Decision newDecision = new Decision();
 		
