@@ -6,19 +6,28 @@ import java.awt.*;
 
 public class gui extends JFrame{
 
+	/** Text that appears at the top of the gui **/
 	private JLabel item1, item2, item3, item4, item5, item6, item7, item8, item9;
 
+	/** Dice that are being displayed in the gui(the numbers that say roll) **/
 	private JLabel die1, die2, die3, die4, die5;
 	
+	/** Values for the scorecard in the gui, displays scores from all turns taken **/
 	private JLabel score1, score2, score3, score4, score5, score6, score7, score8, score9, score10;
 	
+	/** sum value used to show sum of your current roll and total sum at the end of game **/
 	private JLabel sum1, sum2;
 	
+	/** count to make sure proper number of turns occur **/
 	public int count = 0;
 	
+	/** used to call methods from decision class **/
 	Decision decision = new Decision();
 	
+	
 	public gui() {
+		
+		/** all text and window name that is in the gui**/
 		super("Yahtzee");
 		setLayout(new FlowLayout());
 		
@@ -37,9 +46,11 @@ public class gui extends JFrame{
 		item5 = new JLabel("Regardless if your re-roll score is higher or lower, it will be added to your scorecard.");
 		add(item5); 
 		
+		/** button used to start the game when launched **/
 		Button start = new Button("Start");
 		add(start);
 		
+		/** values of the dice rolled on your turn are displayed here **/
 		item6 = new JLabel("Here is your roll. Would you like to re-roll?");
 		add(item6);
 		
@@ -64,12 +75,14 @@ public class gui extends JFrame{
 		sum1 = new JLabel(String.valueOf(Dice.sum));
 		add(sum1);
 		
+		/** allows user to make decision about whether they want to re-roll or not**/
 		Button yes = new Button("Yes");
 		add(yes);
 		
 		Button no = new Button("No");
 		add(no);
 		
+		/** all scores displayed from all turns taken throughout the game **/
 		item7 = new JLabel("                                            Here is your current Scorecard: ");
 		add(item7);
 		
@@ -109,12 +122,13 @@ public class gui extends JFrame{
 		sum2 = new JLabel(String.valueOf(Decision.scoreSum));
 		add(sum2);
 		
+		/** makes sure you cant roll before you hit the start button **/
 		yes.setEnabled(false);
 		
 		no.setEnabled(false);
 		
+		/** logic for the yes button **/
 		yes.addActionListener(e -> {
-			System.out.print("test");
 			decision.decisionYes();
 			count++;
 			if(count == 10) {
@@ -141,8 +155,8 @@ public class gui extends JFrame{
 			score10.setText(String.valueOf(Decision.score[9]));
 			});
 		
+		/** logic for the no button **/
 		no.addActionListener(e -> {
-			System.out.print("test1");
 			decision.decisionNo();
 			count++;
 			if(count == 10) {
@@ -169,8 +183,9 @@ public class gui extends JFrame{
 			score10.setText(String.valueOf(Decision.score[9]));
 			});
 		
+		/** logic for the start button **/
 		start.addActionListener(e -> {
-			decision.roll();
+			decision.newRoll();
 			die1.setText(String.valueOf(Dice.diceRolls[0]));
 			die2.setText(String.valueOf(Dice.diceRolls[1]));
 			die3.setText(String.valueOf(Dice.diceRolls[2]));
