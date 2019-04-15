@@ -11,50 +11,39 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 
+/*****************************************************************
+Main class that starts the game and updates GUI.
+*****************************************************************/
 public class Main extends JFrame {
 
+	/**creates object for scores class to calculate scores.**/
 	Scores scores = new Scores();
 	
+	/**counts the turn to end game later.**/
 	int turnNum = 0;
 	
+	/**initializes the intial gui.**/
 	private JPanel contentPane;
-	private JLabel roll5;
-	private JLabel roll1;
-	private JLabel roll2;
-	private JLabel roll3;
-	private JLabel roll4;
-	private JLabel acesNum;
-	private JLabel twosNum;
-	private JLabel threesNum;
-	private JLabel foursNum;
-	private JLabel fivesNum;
-	private JLabel sixesNum;
-	private JButton acesAdd;
-	private JButton twosAdd;
-	private JButton threesAdd;
-	private JButton foursAdd;
-	private JButton fivesAdd;
-	private JButton sixesAdd;
-	private JLabel acesScore;
-	private JLabel twosScore;
-	private JLabel threesScore;
-	private JLabel foursScore;
-	private JLabel fivesScore;
-	private JLabel sixesScore;
-	private JLabel threeoakNum;
-	private JLabel fouroakNum;
-	private JLabel yahtzeeNum;
-	private JButton threeoakAdd;
-	private JButton fouroakAdd;
-	private JButton yahtzeeAdd;
-	private JLabel threeoakScore;
-	private JLabel fouroakScore;
-	private JLabel yahtzeeScore;
+	
+	/**displays the roll for dice.**/
+	private JLabel roll1, roll2, roll3, roll4, roll5;
+	
+	/**displays the number calculated that could be added to scorecard.**/
+	private JLabel acesNum, twosNum, threesNum, foursNum, fivesNum, sixesNum, threeoakNum, fouroakNum, yahtzeeNum;
+
+	/**displays the add button for each score.**/
+	private JButton acesAdd, twosAdd, threesAdd, foursAdd, fivesAdd, sixesAdd, threeoakAdd, fouroakAdd, yahtzeeAdd;
+
+	/**displays the number that is in your scorecard.**/
+	private JLabel acesScore, twosScore, threesScore, foursScore, fivesScore, sixesScore, threeoakScore, fouroakScore, yahtzeeScore;
+
+	/**reroll button for reroll.**/
 	private JButton reRollButton;
 
-	/**
-	 * Launch the application.
-	 */
+	/*****************************************************************
+    Main method that runs the program.
+    @param args main argument for main method.
+    *****************************************************************/
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -68,9 +57,9 @@ public class Main extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	/*****************************************************************
+    Main method constructor that runs yahtzee game GUI.
+    *****************************************************************/
 	public Main() {
 		super("Yahtzee");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -416,9 +405,13 @@ public class Main extends JFrame {
         turn();
 	}
 	
-	private void turn() {
+	
+	/*****************************************************************
+    Method to make it so there is only 10 turns in the game.
+    *****************************************************************/
+	public void turn() {
 		
-		if(turnNum < 9) {
+		if (turnNum < 9) {
 		scores.newRoll();
         roll1.setText(Integer.toString(scores.getRoll()[0]));
         roll2.setText(Integer.toString(scores.getRoll()[1]));
@@ -435,15 +428,18 @@ public class Main extends JFrame {
         threeoakNum.setText(Integer.toString(scores.threeOfKind()));
         fouroakNum.setText(Integer.toString(scores.fourOfKind()));
         yahtzeeNum.setText(Integer.toString(scores.yahtzee()));
-		}
-		else {
+		} else {
 			reRollButton.setEnabled(false);
 			JOptionPane.showMessageDialog(null, "End of Game. Final score: " + finalScore());
 		}
         
 	}
 	
-	private int finalScore() {
+	/*****************************************************************
+    Displays final score of game when 10 turns are over.
+    @return integer value of final score.
+    *****************************************************************/
+	public int finalScore() {
 		int score = 0;
 		score += Integer.parseInt(acesScore.getText());
 		score += Integer.parseInt(twosScore.getText());
